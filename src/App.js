@@ -7,6 +7,8 @@ function App() {
 
   const [tasksItems, setTasksItems] = useState([]);
 
+  const [showCompleted, setShowCompleted] = useState(false);
+
   function createNewTask(taskName) {
     if(!tasksItems.find(task => task.name === taskName)){
       setTasksItems([...tasksItems, {name: taskName, done: false}])
@@ -39,6 +41,18 @@ function App() {
         tasks={tasksItems}
         toggleTask={toggleTask}
       />
+      <div>
+        <input type="checkbox" onChange={(e) => setShowCompleted(!showCompleted)}/><label>Show Tasks Done</label>
+      </div>
+      {
+        showCompleted && (
+          <TaskTable 
+            tasks={tasksItems}
+            toggleTask={toggleTask}
+            showCompleted={showCompleted}
+          />
+        )
+      }
     </div>
   );
 }
