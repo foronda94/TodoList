@@ -8,14 +8,18 @@ const VisibilityControl = ({ isChecked, setShowCompleted, cleanTasks }) => {
   };
 
   return (
-    <div>
-      <input
-        checked={isChecked}
-        type="checkbox"
-        onChange={(e) => setShowCompleted(e.target.checked)}
-      />
-      <label>Show Tasks Done</label>
+    <div className="d-flex justify-content-between text-center bg-secondary text-white p-2 border-secondary">
+      <div className="form-check form-switch">
+        <input
+          className="form-check-input"
+          checked={isChecked}
+          type="checkbox"
+          onChange={(e) => setShowCompleted(e.target.checked)}
+        />
+        <label>Show Tasks Done</label>
+      </div>
       <button
+      className="btn btn-danger btn-sm"
         onClick={handleDelete}
       >
         Clear
